@@ -1,0 +1,27 @@
+<h1>New Character in <br><%= @movie.title %></h1>
+
+
+<%= form_tag(roles_url, method: 'post') do %>
+
+
+  <div>
+    <%= label_tag :name, "Character" %><br />
+    <%= text_field_tag :name %>
+  </div>
+
+  <div>
+    <%= label_tag :actor_id, "Played by:" %><br />
+    <%= select_tag :actor_id,
+                   options_from_collection_for_select(@actors, :id, :name) %>
+  </div>
+
+  <div>
+
+    <%= hidden_field_tag :movie_id, @movie.id %>
+  </div>
+
+
+  <div>
+    <%= submit_tag "Create Role" %>
+  </div>
+<% end %>
